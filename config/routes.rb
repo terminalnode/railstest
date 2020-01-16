@@ -15,4 +15,6 @@ Rails.application.routes.draw do
 
   # Uncommenting this makes it so we can access welcome#index from root url
   root 'welcome#index'
+
+  resources :articles
 end
