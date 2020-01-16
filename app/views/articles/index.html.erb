@@ -1,0 +1,11 @@
+<h1>Listing Articles</h1>
+Click <%= link_to 'here', new_article_path %> to post a new article.
+<br>
+<br>
+
+<table>
+  <% @articles.each do |article| %>
+    <%= "#{article.id.to_s.rjust(@decimal_points, '0')}. " %>
+    <%= link_to "#{article.title}", article_path(article) %><br>
+  <% end %>
+</table>
