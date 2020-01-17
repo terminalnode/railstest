@@ -6,6 +6,6 @@ Click <%= link_to 'here', new_article_path %> to post a new article.
 <table>
   <% @articles.each do |article| %>
     <%= "#{article.id.to_s.rjust(@decimal_points, '0')}. " %>
-    <%= link_to "#{article.title}", article_path(article) %><br>
+    <%= link_to article.listing_with_time, article_path(article) %><br>
   <% end %>
 </table>
