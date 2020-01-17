@@ -5,7 +5,27 @@ class ArticlesController < ApplicationController
   end
 
   def new
+    # This is to ensure that we have an errorless
+    # article to pass into the error check when
+    # the new-page is loaded. If we don't do this
+    # @article will be nil on first load and throw
+    # NoMethodErrors all over the place.
+
     @article = Article.new
+  end
+
+  def edit
+    @article = Article.find(params[:id])
+  end
+
+  def update
+    @article = Article.find(params[:id])
+
+    if @article.update(article_params)
+      redirect_to @article
+    else
+      render :edit
+    end
   end
 
   def create

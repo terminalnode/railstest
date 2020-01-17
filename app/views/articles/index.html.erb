@@ -4,8 +4,28 @@ Click <%= link_to 'here', new_article_path %> to post a new article.
 <br>
 
 <table>
-  <% @articles.each do |article| %>
-    <%= "#{article.id.to_s.rjust(@decimal_points, '0')}. " %>
-    <%= link_to article.listing_with_time, article_path(article) %><br>
+  <tr>
+    <th>ID</th>
+    <th>Title</th>
+    <th>Posted on</th>
+  </tr>
+  <% @articles.reverse.each do |article| %>
+    <tr>
+      <td>
+        <%= "#{article.id.to_s.rjust(@decimal_points, '0')}. " %>
+      </td>
+
+      <td>
+        <%= link_to article.title, article_path(article) %>
+      </td>
+
+      <td>
+        <%= article.time_as_s %>
+      </td>
+
+      <td>
+        <%= link_to ' (edit)', edit_article_path(article) %><br>
+      </td>
+    </tr>
   <% end %>
 </table>
